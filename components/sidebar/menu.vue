@@ -1,4 +1,6 @@
 <script setup lang="ts">
+defineProps<{ close?: () => void }>();
+
 const route = useRoute();
 const items = ref([
   {
@@ -37,7 +39,7 @@ const path = computed(() => route.path);
       class="flex cursor-pointer items-center gap-2 p-4 transition hover:scale-[101%]"
     >
       <Logo />
-      <p class="font-bold">Nuxt Finance</p>
+      <p class="font-bold text-black">Nuxt Finance</p>
     </header>
 
     <div class="grow px-4">
@@ -45,6 +47,7 @@ const path = computed(() => route.path);
         <NuxtLink
           v-for="(item, index) in items"
           :href="item.path"
+          @click="close && close()"
           :key="index"
           class="flex cursor-pointer items-center gap-2 rounded px-2 py-1 transition hover:bg-neutral-100"
           :class="path === item.path ? 'bg-neutral-100' : ''"
