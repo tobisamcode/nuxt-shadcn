@@ -4,6 +4,6 @@ const loading = ref(false);
 
 <template>
   <div>
-    <div>hello Today</div>
+    <div class="p-2 h-full flex flex-col justify-between gap-2"></div>
   </div>
 </template>

@@ -5,7 +5,7 @@ const open = ref(true);
 </script>
 
 <template>
-  <div class="">
+  <div class="top-0 z-50 lg:sticky lg:left-0 lg:flex lg:h-screen lg:flex-col">
     <!-- MOBILE -->
     <div
       class="z-50 flex h-full w-full items-center justify-between p-4 lg:hidden"
@@ -41,7 +41,9 @@ const open = ref(true);
       class="hidden h-screen w-[250px] flex-col justify-between border-r lg:flex"
     >
       <SidebarMenu />
-      <div class="">useritem</div>
+      <div>
+        <UserItem />
+      </div>
     </div>
   </div>
 </template>
