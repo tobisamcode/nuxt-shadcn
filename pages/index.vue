@@ -1,4 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const lists = [
+  {
+    title: "Today",
+    component: resolveComponent("TabsToday"),
+  },
+  {
+    title: "Week",
+    component: resolveComponent("TabsWeek"),
+  },
+  {
+    title: "Month",
+    component: resolveComponent("TabsMonth"),
+  },
+  {
+    title: "Year",
+    component: resolveComponent("TabsYear"),
+  },
+];
+</script>
 
 <template>
   <div class="grid gap-4">
@@ -10,6 +31,24 @@
       <div class="h-[36px] w-[120px] bg-neutral-200"></div>
     </header>
     <main class="grid gap-4">
+      <Tabs default-value="Today" class="w-[400px]">
+        <TabsList>
+          <TabsTrigger
+            v-for="(item, index) in lists"
+            :key="index"
+            :value="item.title"
+          >
+            {{ item.title }}
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent
+          v-for="(item, index) in lists"
+          :key="index"
+          :value="item.title"
+        >
+          <component :is="item.component" />
+        </TabsContent>
+      </Tabs>
       <div class="flex items-center gap-4">
         <div
           v-for="(item, index) in 3"
